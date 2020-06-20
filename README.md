@@ -1,4 +1,4 @@
-## BSc Thesis Supplementary Materials
+# BSc Thesis Supplementary Materials
 
 István Sárándi: Developing a System to Support Medical Coding (Egészségügyi Kódolástámogató Rendszer Fejlesztése)
 
@@ -12,8 +12,7 @@ Contents:
 
 - netbeans_projects:
 	Project directories for the NetBeans IDE. The /src subfolder has the source code, /dist the .jar files
-
-------------------------------
+	For example the main code for the classifier server is under [netbeans_projects/DiagnosisProject/src](https://github.com/isarandi/medical_coding_thesis/tree/master/netbeans_projects/DiagnosisProject/src)
 
 ## Interpreting the output
 
@@ -26,9 +25,7 @@ Columns: R(1), R(5), R(10), R(20)
 
 More complex evaluations require modifying the sources.
 
-------------------------------
-
-Bringing up the web interface
+## Bringing up the web interface
 
 Load the webserver project in NetBeans and start it, the browser will open automatically.
 It will try to connect to the classifier server at localhost:5555.
