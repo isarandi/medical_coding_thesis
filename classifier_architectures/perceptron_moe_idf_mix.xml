@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE architecture SYSTEM "architecture.dtd">
+
+<architecture>
+
+    <classifier id="idf">
+        <type>VectorSpace</type>
+        <inputtransform>idf</inputtransform>
+    </classifier>    
+  
+    <classifier id="mlp">
+        <type>MLP</type>
+        <param name="learnrate">0.1</param>
+        <param name="maxepochs">3000</param>
+        <param name="splitratio">0.9</param>
+        <param name="learningmonitor">
+            <learningmonitor>
+                <type>DecreaseRatio</type>
+                <param name="ratio">0.2</param>
+                <param name="windowsize">5</param>
+            </learningmonitor>
+        </param>
+        <param name="errorcalculator">LogLikelihood</param>
+    </classifier>
+   
+    <classifier id="moe">
+        <type>Hierarchic</type>
+        <param name="root">
+            <classifier ref="mlp" />
+        </param>
+        <param name="child">
+            <classifier ref="mlp">
+                <inputtransform>compress</inputtransform>
+                <outputtransform>counter</outputtransform>
+            </classifier>
+        </param>
+        <param name="childselector">
+            <converter>
+                <type>Interval</type>
+                <param name="file">code_chapters.txt</param>
+            </converter>
+        </param>
+    </classifier>
+    
+    <classifier id="team">
+        <type>ConstantWeightTeam</type>
+        <param name="c1">
+            <classifier ref="moe">
+
+            </classifier>
+        </param>
+        <param name="c2">
+            <classifier ref="idf">
+
+            </classifier>
+        </param>
+        <param name="ratio">0.4</param>
+    </classifier>
+    
+    <classifier id="main" ref="team">
+        <inputtransform>bagofwords</inputtransform>
+    </classifier>
+</architecture>
+

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE architecture SYSTEM "architecture.dtd">
+
+<architecture>
+
+    
+    <classifier id="main">
+        <type>LibLinear</type>
+        <param name="c">10</param>
+        <outputtransform>counter</outputtransform>
+    </classifier>
+    
+</architecture>
+

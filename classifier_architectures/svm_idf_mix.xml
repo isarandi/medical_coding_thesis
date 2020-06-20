@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE architecture SYSTEM "architecture.dtd">
+
+<architecture>
+
+    <classifier id="idf">
+        <type>VectorSpace</type>
+        <inputtransform>idf</inputtransform>
+    </classifier>    
+  
+    <classifier id="svm">
+        <type>LibLinear</type>
+        <param name="c">10</param>
+        <outputtransform>counter</outputtransform>
+    </classifier>
+   
+       
+    <classifier id="team">
+        <type>ConstantWeightTeam</type>
+        <param name="c1">
+            <classifier ref="svm" />
+        </param>
+        <param name="c2">
+            <classifier ref="idf" />
+        </param>
+        <param name="ratio">0.4</param>
+    </classifier>
+    
+    <classifier id="main" ref="team">
+        <inputtransform>bagofwords</inputtransform>
+    </classifier>
+</architecture>
+

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE architecture SYSTEM "architecture.dtd">
+
+<architecture>
+
+    <classifier id="idf">
+        <type>VectorSpace</type>
+        <inputtransform>idf</inputtransform>
+    </classifier>    
+  
+    <classifier id="svm">
+        <type>LibLinear</type>
+        <param name="c">10</param>
+    </classifier>
+
+   
+    <classifier id="moe">
+        <type>Hierarchic</type>
+        <param name="root">
+            <classifier ref="svm" />
+        </param>
+        <param name="child">
+            <classifier ref="svm">
+                <inputtransform>compress</inputtransform>
+                <outputtransform>counter</outputtransform>
+            </classifier>
+        </param>
+        <param name="childselector">
+            <converter>
+                <type>Interval</type>
+                <param name="file">code_chapters.txt</param>
+            </converter>
+        </param>
+    </classifier>
+
+    
+    <classifier id="team">
+        <type>ConstantWeightTeam</type>
+        <param name="c1">
+            <classifier ref="moe">
+
+            </classifier>
+        </param>
+        <param name="c2">
+            <classifier ref="idf">
+
+            </classifier>
+        </param>
+        <param name="ratio">0.4</param>
+    </classifier>
+    
+    <classifier id="main" ref="team">
+        <inputtransform>bagofwords</inputtransform>
+    </classifier>
+</architecture>
+

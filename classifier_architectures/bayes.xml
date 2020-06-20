@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE architecture SYSTEM "architecture.dtd">
+
+<architecture>
+    
+  
+    <classifier id="main">
+        <type>Bayes</type>
+        <inputtransform>bagofwords</inputtransform>
+    </classifier>
+    
+</architecture>
+

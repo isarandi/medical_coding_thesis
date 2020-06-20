@@ -1,0 +1,53 @@
+body{
+    background-color: #FFF8DC;
+    font-family: sans-serif;
+}
+
+.searching {
+    border: solid 1px #98bf21;
+    background-color: #FFEFD5;
+    padding: 10px;
+    margin-bottom: 20px;
+
+}
+h2 {
+    margin-top:0px;
+}
+
+h3{
+    margin: 3px 20px 3px 20px;
+}
+
+table.results{
+    border: solid 1px;
+    font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse:collapse;
+}
+
+table.results td, table.results th {
+    border:1px solid #98bf21;
+    padding:3px 7px 2px 7px;
+    color: black;
+    text-align: center;
+}
+table.results th {
+    font-size:1.2em;
+    text-align:center;
+    padding-top:5px;
+    padding-bottom:4px;
+    background-color:#A7C942;
+    color:#fff;
+}
+table.results th a {
+    text-decoration: none;
+}
+
+table.results tr.odd td {
+    background-color: #FFEFD5;
+}
+
+table.results tr.even td {
+    background-color: #ffe4b5;
+}
+
+

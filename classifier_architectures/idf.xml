@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE architecture SYSTEM "architecture.dtd">
+
+<architecture>
+    
+  
+    <classifier id="main">
+        <type>VectorSpace</type>
+        <inputtransform>bagofwords</inputtransform>
+        <inputtransform>idf</inputtransform>
+    </classifier>
+    
+</architecture>
+

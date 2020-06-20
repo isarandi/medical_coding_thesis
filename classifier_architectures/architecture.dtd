@@ -1,0 +1,19 @@
+<?xml version='1.0' encoding='UTF-8'?>
+
+<!ELEMENT architecture (classifier)*>
+<!ELEMENT classifier ((type, param*, inputtransform*, outputtransform*)*| (inputtransform*, outputtransform*))>
+<!ATTLIST classifier
+    ref CDATA #IMPLIED
+    file CDATA #IMPLIED
+    id CDATA #IMPLIED
+  >
+
+<!ELEMENT type (#PCDATA)>
+<!ELEMENT inputtransform (#PCDATA)>
+<!ELEMENT outputtransform (#PCDATA)>
+<!ELEMENT param (#PCDATA|converter|classifier|learningmonitor)*>
+<!ATTLIST param
+    name CDATA #REQUIRED
+  >
+<!ELEMENT converter (param|type)*>
+<!ELEMENT learningmonitor (param|type)*>
